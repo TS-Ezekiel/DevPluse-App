@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevPulse — Real-Time API & Service Monitor</title>
+  
+  <!-- Content Security Policy -->
+  <meta 
+    http-equiv="Content-Security-Policy" 
+    content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' http://127.0.0.1:* ws://127.0.0.1:*;"
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js for Latency Visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="pulse-icon"></span>
+      <h1>DevPulse</h1>
+    </div>
+    <div class="system-status">
+      <span class="indicator live"></span> Live Monitoring
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    
+    <!-- Controls Section: Add New Endpoint -->
+    <section class="add-service-card">
+      <h2>Monitor New Service</h2>
+      <form id="add-service-form" class="service-form">
+        <div class="input-group">
+          <input type="text" id="service-name" placeholder="Service Name (e.g., Auth API)" required />
+        </div>
+        <div class="input-group">
+          <input type="url" id="service-url" placeholder="Endpoint URL (https://...)" required />
+        </div>
+        <button type="submit" class="btn-primary">+ Add Endpoint</button>
+      </form>
+    </section>
+
+    <!-- Services Grid Display -->
+    <section class="services-section">
+      <div class="section-header">
+        <h2>Monitored Endpoints</h2>
+        <span id="service-count" class="badge-count">0 Active</span>
+      </div>
+      <div id="services-container" class="services-grid">
+        <!-- Dynamic JS service cards will render here -->
+        <div class="loading-state">Loading system metrics...</div>
+      </div>
+    </section>
+
+    <!-- Analytics Chart Section -->
+    <section class="chart-section">
+      <div class="section-header">
+        <h2>Latency Trend (ms)</h2>
+        <span id="active-chart-title" class="chart-subtitle">Select an endpoint to view logs</span>
+      </div>
+      <div class="chart-container">
+        <canvas id="latencyChart"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+
+  <script src="app.js" type="module" defer></script>
+</body>
+</html>
