@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const cron = require('node-cron');
@@ -13,6 +14,13 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://devpulse_admin:DevPuls
 const apiRoutes = require('./routes/apiRoutes');
 
 const app = express();
+
+app.use(cors({
+  origin: 'https://https://devpluseapp.netlify.app/', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 const PORT = process.env.PORT || 5500;
 //const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/devpulse';
 
@@ -27,6 +35,7 @@ app.use('/api', require('./routes/apiRoutes'));
 app.get('/*splat', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
 
 // Cron monitoring engine
 function startMonitoringEngine() {
