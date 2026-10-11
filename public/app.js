@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 async function fetchServices() {
   try {
-    const res = await fetch('/api/services');
+    const res = await fetch('https://devpluse-app-production.up.railway.app/api/services');
     if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
     
     const services = await res.json();
@@ -112,7 +112,7 @@ async function deleteService(serviceId, serviceName) {
   }
 
   try {
-    const res = await fetch(`/api/services/${serviceId}`, {
+    const res = await fetch(`https://devpluse-app-production.up.railway.app/api/services/${serviceId}`, {
       method: 'DELETE'
     });
 
@@ -147,7 +147,7 @@ async function handleAddService(e) {
   };
 
   try {
-    const res = await fetch('/api/services', {
+    const res = await fetch('https://devpluse-app-production.up.railway.app/api/services', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newService)
@@ -179,7 +179,7 @@ async function selectService(serviceId, serviceName) {
   chartTitle.textContent = `Showing historical metrics for ${serviceName}`;
 
   try {
-    const res = await fetch(`/api/services/${serviceId}/logs`);
+    const res = await fetch(`https://devpluse-app-production.up.railway.app/api/services/${serviceId}/logs`);
     if (!res.ok) throw new Error('Failed to load logs');
 
     const logs = await res.json();
