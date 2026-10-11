@@ -16,7 +16,7 @@ const apiRoutes = require('./routes/apiRoutes');
 const app = express();
 
 app.use(cors({
-  origin: 'https://https://devpluseapp.netlify.app/', 
+  origin: 'https://devpluseapp.netlify.app/', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
