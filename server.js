@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -8,7 +9,7 @@ const cron = require('node-cron');
 const Service = require('./models/Service');
 const PingLog = require('./models/PingLog');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://devpulse_admin:DevPulse2026Pass@cluster0.yfoajs7.mongodb.net/devplus?appName=Cluster0@cluster0.abcde.mongodb.net/devpulse?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 // 2. Import API routes AFTER models are loaded
 const apiRoutes = require('./routes/apiRoutes');
