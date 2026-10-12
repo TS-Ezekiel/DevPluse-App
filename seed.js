@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 // seed.js
 const mongoose = require('mongoose');
 const Service = require('./models/Service');
 const PingLog = require('./models/PingLog');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://devpulse_admin:DevPulse2026Pass@cluster0.yfoajs7.mongodb.net/devpulse?appName=Cluster0&retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 const initialServices = [
   { name: 'Google Search', url: 'https://google.com' },
