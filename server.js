@@ -11,6 +11,16 @@ const PingLog = require('./models/PingLog');
 
 const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
 
+if (!MONGO_URI) {
+  console.error("❌ ERROR: MONGODB_URI is undefined! Check your .env file.");
+  process.exit(1);
+}
+
+// Now pass MONGO_URI into mongoose.connect
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("✅ Connected to MongoDB Atlas!"))
+  .catch(err => console.error("MongoDB connection error:", err))
+
 // 2. Import API routes AFTER models are loaded
 const apiRoutes = require('./routes/apiRoutes');
 
