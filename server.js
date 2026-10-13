@@ -19,7 +19,7 @@ if (!MONGO_URI) {
 // Now pass MONGO_URI into mongoose.connect
 mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB Atlas!"))
-  .catch(err => console.error("MongoDB connection error:", err))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 // 2. Import API routes AFTER models are loaded
 const apiRoutes = require('./routes/apiRoutes');
